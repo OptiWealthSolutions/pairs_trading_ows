@@ -5,6 +5,8 @@ import numpy as np
 import statsmodels as sm
 from statsmodels import coint, OLS
 
+#pipe line road map
+
 
 class Strategy():
     def __init__(self):
@@ -14,7 +16,7 @@ class Strategy():
         pass
 
     def getcoint(data):
-        score, p_value, _ = coint(data["AAPL"], data["MSFT"])
+        score, p_value, _ = coint(data[0], data[1])
         return p_value
 
     def createPairs(self):

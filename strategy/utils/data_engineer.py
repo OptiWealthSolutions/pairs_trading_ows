@@ -15,3 +15,8 @@ class DataEngineer():
         df = df.dropna()
         return df
     
+    def getCluster(self):
+        pass
+
+    def createList(self):
+        pass
