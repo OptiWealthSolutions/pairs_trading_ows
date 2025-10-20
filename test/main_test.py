@@ -15,7 +15,7 @@ def getData(tickers):
     data = data.dropna()
     return data
 
-tickers = ['GOOG','GOOGL']
+tickers = ['PEP','KO']
 data  = getData(tickers)
 print(data)
 
@@ -71,9 +71,13 @@ data['z_score'] = (data['Xk']-mu)/sigma_eq
 # measures how far ( ) X t deviates from its mean level and is
 # a valid measure across all securities since it is
 # dimensionless. More details of signal will be given later.
-entry = 1
-exit = 0.2
 data['signal'] = 0
+s = -mu * np.sqrt(2 * theta) / sigma
+lower_band = 0.5*s
+upper_band = 1.2*s
+entry = upper_band
+exit = lower_band
+
 data.loc[data['z_score'] > entry, 'signal'] = -1  # short spread
 data.loc[data['z_score'] < -entry, 'signal'] = 1  # long spread
 data.loc[data['z_score'].abs() < exit, 'signal'] = 0  # exit position
@@ -89,5 +93,8 @@ plt.plot(data['cum_pnl'])
 plt.show()
 
 
-plt.plot(data['beta'])
+plt.plot(data['w1'])
+plt.plot(data['w2'])
 plt.show()
+
+
