@@ -42,9 +42,9 @@ def asset_coords_from_vt(Vt_k):
     """
     Vt_k shape (K, M). Colonnes de beta sont les coordonnées b_m.
     On retourne X shape (M, K) avec chaque ligne = b_m^T.
-    """
+"""
     return Vt_k.T  # (M, K)
-
+à
 # --- 4) pondération ellipsoïdale selon singular values ---
 def scale_for_ellipsoid(X, s_k):
     """
